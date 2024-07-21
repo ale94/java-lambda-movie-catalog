@@ -14,7 +14,7 @@ public class Catalog {
     }
 
     public void getAll() {
-        this.movies.forEach(System.out::println);
+        this.movies.forEach(movie -> System.out.println(movie.getTitle()));
     }
 
     public void filterByGender() {
@@ -22,7 +22,7 @@ public class Catalog {
         var gender = scanner.nextLine();
         this.movies.stream()
                 .filter(movie -> movie.getGender().equals(gender))
-                .forEach(System.out::println);
+                .forEach(movie -> System.out.println(movie.getTitle()));
     }
 
     public void filterByYear() {
@@ -30,7 +30,7 @@ public class Catalog {
         var year = scanner.nextInt();
         this.movies.stream()
                 .filter(movie -> movie.getYear().equals(year))
-                .forEach(System.out::println);
+                .forEach(movie -> System.out.println(movie.getTitle()));
     }
 
     public void searchByTitle() {
@@ -40,7 +40,7 @@ public class Catalog {
                 .filter(m -> m.getTitle().equals(movie))
                 .findFirst()
                 .orElseThrow();
-        System.out.println(movieFromData);
+        System.out.println(movieFromData.getTitle());
     }
 
     public void maxScore() {
@@ -48,7 +48,7 @@ public class Catalog {
                 .mapToLong(Movie::getScore)
                 .max()
                 .orElseThrow();
-        System.out.println(max);
+        System.out.println("Mejor calificación: " + max);
     }
 
     public void averageScore() {
@@ -56,14 +56,14 @@ public class Catalog {
                 .mapToInt(Movie::getScore)
                 .average()
                 .orElseThrow();
-        System.out.println(average);
+        System.out.println("Promedio: " + average);
     }
 
     public void sortedByYear() {
         Comparator<Movie> movieComparator = Comparator.comparing(Movie::getYear);
         this.movies.stream()
                 .sorted(movieComparator)
-                .forEach(System.out::println);
+                .forEach(movie -> System.out.println(movie.getTitle()));
     }
 
     public void addMovie() {
@@ -79,13 +79,14 @@ public class Catalog {
         var score = Integer.parseInt(scanner.nextLine());
         var movieToSave = new Movie(title, year, director, gender, score);
         this.movies.add(movieToSave);
-        System.out.println(movieToSave);
+        System.out.println("Película agregada en el catalogo: " + movieToSave);
     }
 
     public void deleteMovie() {
         System.out.print("Titulo a eliminar: ");
         var movieToDelete = scanner.nextLine();
-        this.movies.removeIf(movie -> movie.getTitle().equalsIgnoreCase(movieToDelete));
+        System.out.println("Película eliminada del catalogo: " + movieToDelete);
+        this.movies.removeIf(movie -> movie.getTitle().equals(movieToDelete));
     }
 
 }
