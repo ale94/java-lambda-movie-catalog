@@ -3,25 +3,25 @@ package ar.com.alejandro;
 import ar.com.alejandro.entities.Catalog;
 import ar.com.alejandro.entities.Movie;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Inception", 2010, "Christopher Nolan", "Sci-Fi", 9));
-        movies.add(new Movie("The Matrix", 1999, "Lana Wachowski", "Sci-Fi", 8));
-        movies.add(new Movie("Interstellar", 2014, "Christopher Nolan", "Sci-Fi", 8));
-        movies.add(new Movie("The Godfather", 1972, "Francis Ford Coppola", "Crime", 9));
-        movies.add(new Movie("The Batman", 2022, "Matt Reeves", "Sci-Fi", 8));
-        movies.add(new Movie("Joker", 2019, "Todd Phillips", "Crime", 10));
+        var movies = List.of(
+            new Movie("Inception", 2010, "Christopher Nolan", "Sci-Fi", 9),
+            new Movie("The Matrix", 1999, "Lana Wachowski", "Sci-Fi", 8),
+            new Movie("Interstellar", 2014, "Christopher Nolan", "Sci-Fi", 8),
+            new Movie("The Godfather", 1972, "Francis Ford Coppola", "Crime", 9),
+            new Movie("The Batman", 2022, "Matt Reeves", "Sci-Fi", 8),
+            new Movie("Joker", 2019, "Todd Phillips", "Crime", 10)
+        );
 
         Catalog catalog = new Catalog(movies);
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Catalogo de Películas:");
+            System.out.println("\nCatalogo de Películas:");
             System.out.println("1. Listar todas las películas");
             System.out.println("2. Filtrar películas por género");
             System.out.println("3. Filtrar películas por año de lanzamiento");
@@ -30,7 +30,8 @@ public class Main {
             System.out.println("6. Obtener la calificación promedio de todas las películas");
             System.out.println("7. Listar las películas ordenadas por año de lanzamiento");
             System.out.println("8. Agregar una nueva película");
-            System.out.println("9. Salir");
+            System.out.println("9. Eliminar una película");
+            System.out.println("10. Salir");
             System.out.print("Seleccione una opción: ");
             var op = scanner.nextInt();
             switch (op) {
@@ -42,14 +43,14 @@ public class Main {
                 case 6 -> catalog.averageScore();
                 case 7 -> catalog.sortedByYear();
                 case 8 -> catalog.addMovie();
-                case 9 -> {
+                case 9 -> catalog.deleteMovie();
+                case 10 -> {
                     System.out.println("Saliendo del catalogo de películas hasta la próxima.");
                     return;
                 }
-                default -> System.out.println("Comando Incorrecto, Digite numero 1 al 9.");
+                default -> System.out.println("Comando Incorrecto, Digite un numero del 1 al 9.");
             }
         }
-
-
     }
+
 }
