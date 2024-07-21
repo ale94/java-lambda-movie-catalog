@@ -22,16 +22,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\nCatalogo de Películas:");
-            System.out.println("1. Listar todas las películas");
-            System.out.println("2. Filtrar películas por género");
-            System.out.println("3. Filtrar películas por año de lanzamiento");
-            System.out.println("4. Buscar una película por título");
-            System.out.println("5. Obtener la película con la calificación más alta");
-            System.out.println("6. Obtener la calificación promedio de todas las películas");
-            System.out.println("7. Listar las películas ordenadas por año de lanzamiento");
-            System.out.println("8. Agregar una nueva película");
-            System.out.println("9. Eliminar una película");
-            System.out.println("10. Salir");
+            System.out.println("1. Listar todas las películas.");
+            System.out.println("2. Filtrar películas por género.");
+            System.out.println("3. Filtrar películas por año de lanzamiento.");
+            System.out.println("4. Buscar una película por título.");
+            System.out.println("5. Obtener la película con la calificación más alta.");
+            System.out.println("6. Obtener la calificación promedio de todas las películas.");
+            System.out.println("7. Listar las películas ordenadas por año de lanzamiento.");
+            System.out.println("8. Agregar una nueva película.");
+            System.out.println("9. Eliminar una película.");
+            System.out.println("10. Salir.");
             System.out.print("Seleccione una opción: ");
             var op = scanner.nextInt();
             switch (op) {
