@@ -1,8 +1,8 @@
-package entities;
+package ar.com.alejandro.entities;
 
 public class Movie {
 
-    private Integer id;
+    private final Integer id;
     private String title;
     private Integer year;
     private String director;
